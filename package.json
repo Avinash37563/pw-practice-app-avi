@@ -66,6 +66,7 @@
     "@angular/compiler-cli": "^14.2.12",
     "@angular/language-service": "14.2.12",
     "@fortawesome/fontawesome-free": "^5.2.0",
+    "@playwright/test": "^1.61.1",
     "@types/leaflet": "1.2.3",
     "@types/node": "^12.12.70",
     "codelyzer": "^0.0.28",
@@ -77,5 +78,17 @@
     "tslint": "~6.1.0",
     "tslint-language-service": "^0.9.9",
     "typescript": "~4.6.4"
-  }
+  },
+  "description": "Practice application for the \"Playwright UI Testing Mastery\" class at https://www.bondaracademy.com",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "keywords": [],
+  "author": "",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Bondar-Academy/playwright-practice-app/issues"
+  },
+  "homepage": "https://github.com/Bondar-Academy/playwright-practice-app#readme"
 }
