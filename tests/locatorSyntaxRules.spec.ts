@@ -1,4 +1,4 @@
-import {test} from '@playwright/test'
+import {expect, test} from '@playwright/test'
 
 test.beforeEach('Hook 1: Navigation to Form Options', async({page})=>{
     await page.goto('http://localhost:4200/')
@@ -58,3 +58,21 @@ test('locating Parent elements ' , async({page})=>{
     await page.locator(':text-is("Using the Grid")').locator('..').getByRole('textbox',{name:"Email"}).click()
 
 })
+test('Reusing the locators ' , async({page})=>{
+
+    const basicForm =  page.locator('nb-card').filter({hasText: "Basic Form"})
+
+    const emailField= basicForm.getByRole('textbox',{name:"Email"})
+
+    const passwordField = basicForm.getByRole('textbox',{name:"Password"})
+
+    await emailField.fill('test@navi.com')
+    await passwordField.fill('They45""£')
+
+    await basicForm.getByRole('button').click()
+    
+    await expect(emailField).toHaveValue('test@navi.com')
+
+
+})
+
