@@ -76,3 +76,23 @@ test('Reusing the locators ' , async({page})=>{
 
 })
 
+test(' Extracting Value ' , async({page})=>{
+//single text value
+    const basicForm =  page.locator('nb-card').filter({hasText: "Basic Form"})
+
+    const buttonText = await basicForm.locator('button').textContent()
+    expect (buttonText).toEqual('Submit')
+    //To all text value
+const allRadioButtonsLabels = await page.locator('nb-radio').allTextContents()
+expect(allRadioButtonsLabels).toContain('Option 1')
+
+//input value
+ const emailField= basicForm.getByRole('textbox',{name:"Email"})
+ await emailField.fill('test@gmial.com')
+ const emailvalue = await emailField.inputValue()
+ expect(emailvalue).toEqual('test@gmial.com')
+
+ const placeHolderValue = await emailField.getAttribute('placeholder')
+ expect(placeHolderValue).toEqual('Email')
+
+})
