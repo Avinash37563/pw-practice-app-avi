@@ -1,10 +1,10 @@
 import {expect, test} from '@playwright/test'
 import { timeout } from 'rxjs-compat/operator/timeout';
 
-test.beforeEach('AJAX URL Operation', async({page})=>{
+test.beforeEach('AJAX URL Operation', async({page},testInfo)=>{
     await page.goto('http://uitestingplayground.com/ajax')
     await page.getByText('Button Triggering AJAX Request').click();
-
+   testInfo.setTimeout(testInfo.timeout +2000)
 
 })
 
@@ -50,4 +50,12 @@ await page.waitForURL('http://uitestingplayground.com/ajax')
 
 
 //expect(successButton).toHaveText('Data loaded with AJAX get request.', {timeout: 20000})
+})
+test('Timeout exploration', async({page})=>{
+//test.setTimeout(10000)
+test.slow()
+
+const successButton = page.locator('.bg-success')
+ await successButton.click()
+
 })
