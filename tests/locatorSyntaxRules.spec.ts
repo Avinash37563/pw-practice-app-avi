@@ -96,3 +96,26 @@ expect(allRadioButtonsLabels).toContain('Option 1')
  expect(placeHolderValue).toEqual('Email')
 
 })
+
+test(' Playwright  Assertions  ' , async({page})=>{
+     const basicFormButton =  page.locator('nb-card').filter({hasText: "Basic Form"}).locator('button')
+     const textBasicFormButton = await basicFormButton.textContent()
+
+     expect(textBasicFormButton).toEqual('Submit')
+
+
+    //general Assertions
+    const value = 5
+     
+   expect(value).toEqual(5)
+
+   //locator Assertions
+   await expect(basicFormButton).toHaveText("Submit")
+
+   //soft assertiona
+
+   await expect.soft(basicFormButton).toHaveText("Submit5")
+
+   await basicFormButton.click()
+
+})
