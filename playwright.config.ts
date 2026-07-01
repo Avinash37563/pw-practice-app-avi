@@ -17,7 +17,7 @@ export default defineConfig({
 
   expect:{
     timeout:20000
-  }
+  },
   testDir: './tests',
   
   testMatch: '**/*.spec.ts',
